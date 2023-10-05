@@ -9,7 +9,6 @@ import NoteListEmpry from "./NoteListEmpty";
 import { useNavigate } from "react-router-dom";
 const NoteList = (props) => {
   const notes = props.notes;
-  console.log(notes);
 
   const router = useNavigate();
   const [searchQuery, setSearchQuery] = useState([]);

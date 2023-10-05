@@ -34,7 +34,7 @@ return (
     <div className='new-note'  onSubmit={handleSubmit}>
       <form className='new-note__form'>
         <div className='new-note__buttom'>
-            <div className='new-note__back'><Link to="/"><MyButton  Link to="/notes"><img src={back} ></img></MyButton></Link></div>
+            <div className='new-note__back'><Link to="/notes"><MyButton  Link to="/notes"><img src={back} ></img></MyButton></Link></div>
         <MyButton  ><img src={save}></img></MyButton>
         </div>
         <div className='new-note__title'>
