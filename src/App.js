@@ -44,7 +44,7 @@ function App() {
 
   return (
     <div className="App">
-      <BrowserRouter>
+     
         <Routes>
           <Route path="/notes" element={<NoteList notes={notes} onDeleteNote={handleDeleteNote} />} />
           <Route
@@ -54,7 +54,7 @@ function App() {
           <Route path="/Note/:id" element={<NotePage  notes={notes} /> }></Route>
     
         </Routes>
-      </BrowserRouter>
+  
     </div>
   );
 }
