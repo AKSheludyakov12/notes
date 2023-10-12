@@ -20,7 +20,7 @@ const NotePage = (props) => {
         <div className="new-note__buttom">
           <div className="new-note__back">
             <Link to="/">
-              <MyButton Link to="/notes">
+              <MyButton>
                 <img src={back}></img>
               </MyButton>
             </Link>
