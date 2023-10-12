@@ -46,7 +46,7 @@ function App() {
     <div className="App">
      
         <Routes>
-          <Route path="/notes" element={<NoteList notes={notes} onDeleteNote={handleDeleteNote} />} />
+          <Route path="/" element={<NoteList notes={notes} onDeleteNote={handleDeleteNote} />} />
           <Route
             path="/NewNote"
             element={<NewNote onNewNoteSubmit={handleNewNoteSubmit}  />}
