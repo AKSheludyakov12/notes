@@ -1,14 +1,15 @@
 
 import { Link, useParams } from "react-router-dom";
+import React from "react";
 import redact from "../img/mode.svg"
 import back from "../img/back.svg";
 import save from "../img/save.svg"
 import "./App.scss"
 import "./NewNote.scss";
-import MyButton from "./ui/button/MyButton";
+import {Button} from "./ui/button/MyButton";
 import "./NotePage.scss";
 import { useState } from "react";
-import MyInput from "./ui/input/MyInput";
+import {MyInput} from "./ui/input/MyInput";
 
 const NotePage = (props) => {
  
@@ -34,16 +35,16 @@ console.log(editNoteText)
         <div className="new-note__buttom">
           
             <Link to="/">
-              <MyButton>
+              <Button>
                 <img
                   src={back}
                 ></img>
-              </MyButton>
+              </Button>
               
             </Link>
             
      
-          {editNoteText && <MyButton onClick={handleEditNoteSubmit}><img src={save}/></MyButton>}
+          {editNoteText && <Button onClick={handleEditNoteSubmit}><img src={save}/></Button>}
         </div>
         <div>
           <div className="page-note__content">

@@ -5,7 +5,7 @@ import "./NewNote.scss"
 import "./NoteList"
 import back from '../img/back.svg';
 import save from '../img/save.svg';
-import MyButton from "./ui/button/MyButton"
+import { Button } from "./ui/button/MyButton"
 import MyInput from './ui/input/MyInput';
 
 
@@ -36,14 +36,14 @@ return (
     <div className='new-note'  >
       <form className='new-note__form'>
         <div className='new-note__buttom'>
-            <div className='new-note__back' onClick={handleSubmit} ><Link to="/"><MyButton  ><img src={back} ></img></MyButton></Link></div>
+            <div className='new-note__back' onClick={handleSubmit} ><Link to="/"><Button  ><img src={back} ></img></Button></Link></div>
        
         </div>
         <div className='new-note__title'>
           <MyInput type='text' placeholder='Title' value={noteTitle} onChange={handleNoteTitleChange} ></MyInput>
         </div>
         <div className='new-note__text'>
-        <textarea  type='text' placeholder='Type something...' value={noteText} onChange={handleNoteTextChange}></textarea>
+        <textarea placeholder='Type something...' value={noteText} onChange={handleNoteTextChange}></textarea>
         
         </div>
       </form>
