@@ -1,4 +1,5 @@
 import "./App.css";
+
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import NewNote from "./components/NewNote";
@@ -17,6 +18,9 @@ function App() {
       setNotes(savedNotes);
     }
   }, []);
+
+  const [title, setTitle] = useState('');
+const [text, setText] = useState('');
 
   useEffect(() => {
     localStorage.setItem("notes", JSON.stringify(notes));
@@ -42,16 +46,31 @@ function App() {
     setNotes(notes.filter((note) => note.id !== id))
   }
 
+const handeEditNoteSubmit = (id, newTitle, newText) => {
+  setNotes((prevNotes) =>{
+    return prevNotes.map((note) =>{
+      if (note.id === id){
+        return {
+          ...note,
+          noteTitle: newTitle,
+          noteText: newText
+        }
+      }
+      return note
+    })
+  })
+}
+
   return (
     <div className="App">
-     
+ 
         <Routes>
           <Route path="/" element={<NoteList notes={notes} onDeleteNote={handleDeleteNote} />} />
           <Route
             path="/NewNote"
             element={<NewNote onNewNoteSubmit={handleNewNoteSubmit}  />}
           />
-          <Route path="/Note/:id" element={<NotePage  notes={notes} /> }></Route>
+          <Route path="/Note/:id" element={<NotePage  notes={notes} onEditNote={handeEditNoteSubmit} setTitle={setTitle} setText={setText} text={text} title={title} /> }></Route>
     
         </Routes>
   

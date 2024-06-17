@@ -6,7 +6,7 @@
   
   .new-note__form{
     display: block;
-    padding-left: 24px;
+
   }
   .new-note__title{
     padding-top: 40px;
@@ -16,10 +16,7 @@
   .new-note__buttom{
     display: flex;
     margin-top: 60px;
-  }
-
-  .new-note__save{
-    margin-left: 260px;
+    justify-content: space-between;
   }
 
 
@@ -30,17 +27,17 @@
     left: 80%;}
     
 
-    .new-note__back{
-      margin-right: 265px;
-    }
+   
     
 
     textarea{
+      width: calc(95vw - 100px);
       overflow: scroll;
       font-size: 23px;
       padding-top: 35px ;
-      width: 100%;
-      
       min-height: 450px;
+      @media(max-width: 1440px){
+        width: calc(100vw - 100px);
+      }
     }
 

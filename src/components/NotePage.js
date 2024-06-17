@@ -1,43 +1,88 @@
-import redact from "../img/mode.svg";
-import { Link } from "react-router-dom";
+
+import { Link, useParams } from "react-router-dom";
+import redact from "../img/mode.svg"
 import back from "../img/back.svg";
-import NoteList from "./NoteList";
-import "./NewNote.css";
-import { useLocation, useHistory, usep } from "react-router-dom";
+import save from "../img/save.svg"
+import "./App.scss"
+import "./NewNote.scss";
 import MyButton from "./ui/button/MyButton";
-import { useParams } from "react-router-dom";
+import "./NotePage.scss";
+import { useState } from "react";
+import MyInput from "./ui/input/MyInput";
+
 const NotePage = (props) => {
-  console.log(props)
+ 
   const { id } = useParams();
-  
+  const [editNoteText, setEditNoteText] = useState(false);
   const note = props.notes.find((note) => note.id === id);
+  const [updatedTitle, setUpdatedTitle] = useState(note ? note.noteTitle : "");
+  const [updatedText, setUpdatedText] = useState(note ? note.noteText : "");
 
-  
+ 
+const handleEditNoteSubmit = () => {
+  if (updatedTitle !== note.noteTitle || updatedText !== note.noteText) {
+    props.onEditNote(id, updatedTitle, updatedText);
+  }
+  setEditNoteText(true);
+};
 
+console.log(editNoteText)
   return (
+    <div className='container'>
     <div className="new-note">
       <form className="new-note__form">
         <div className="new-note__buttom">
-          <div className="new-note__back">
+          
             <Link to="/">
               <MyButton>
-                <img src={back}></img>
+                <img
+                  src={back}
+                ></img>
               </MyButton>
+              
             </Link>
-          </div>
-          <MyButton>
-            <img src={redact}></img>
-          </MyButton>
+            
+     
+          {editNoteText && <MyButton onClick={handleEditNoteSubmit}><img src={save}/></MyButton>}
         </div>
         <div>
-          <div className="page-note__title">
-            <h1>{note.noteTitle}</h1>
+          <div className="page-note__content">
+          <div className="page-note__title" onClick={() => setEditNoteText(true)}>
+            {editNoteText ? (
+              
+                <MyInput
+                  type="text"
+                  value={updatedTitle}
+                  placeholder={note ? note.noteTitle : ""}
+                  onChange={(e) => setUpdatedTitle(e.target.value)}
+                />
+
+            ) : (
+              <h1>{note ? note.noteTitle : ""}</h1>
+            )}
           </div>
-          <div className="page-note__text">{note.noteText}</div>
+          <div
+            className="page-note__text "
+            onClick={() => setEditNoteText(true)}
+          >
+            {setEditNoteText ? (
+              <textarea
+              value={updatedText}
+              onChange={(e) => setUpdatedText(e.target.value)}
+            >
+              {note ? note.noteText : ""}
+            </textarea>
+            ) : (
+              <p>{note.noteText}</p>
+            )}
+          </div>
+          </div>
+      
         </div>
       </form>
+    </div>
     </div>
   );
 };
 
-export default NotePage;
+export default NotePage;  

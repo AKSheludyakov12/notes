@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
-import "./NewNote.css"
+import "./App.scss"
+import "./NewNote.scss"
 import "./NoteList"
 import back from '../img/back.svg';
 import save from '../img/save.svg';
@@ -31,11 +32,12 @@ const NewNote = (props) => {
       }
 
 return (
-    <div className='new-note'  onSubmit={handleSubmit}>
+  <div className='container'>
+    <div className='new-note'  >
       <form className='new-note__form'>
         <div className='new-note__buttom'>
-            <div className='new-note__back'><Link to="/"><MyButton  ><img src={back} ></img></MyButton></Link></div>
-        <MyButton  ><img src={save}></img></MyButton>
+            <div className='new-note__back' onClick={handleSubmit} ><Link to="/"><MyButton  ><img src={back} ></img></MyButton></Link></div>
+       
         </div>
         <div className='new-note__title'>
           <MyInput type='text' placeholder='Title' value={noteTitle} onChange={handleNoteTitleChange} ></MyInput>
@@ -45,6 +47,7 @@ return (
         
         </div>
       </form>
+      </div>
       </div>
 )
 }

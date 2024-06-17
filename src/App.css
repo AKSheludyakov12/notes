@@ -23,22 +23,19 @@ textarea
 }
 
 
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
 ::-webkit-scrollbar {
   width: 0;
 }
 
 .App {
-  max-height: 750px;
-  min-height: 750px;
-  min-width: 415px;
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 420px;
-  border-radius: 4px;
-  background: #252525;
-  border: 8px solid rgba(0, 0, 0, 0.80);
+  overflow: scroll;
+
 }
   
 
