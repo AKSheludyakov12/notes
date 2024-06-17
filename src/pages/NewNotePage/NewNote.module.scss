@@ -1,19 +1,19 @@
-.new-note{
+.NewNote{
     display: flex;
     background-color: #252525;
     color: #fff;
   }
   
-  .new-note__form{
+  .note__form{
     display: block;
 
   }
-  .new-note__title{
+  .note__title{
     padding-top: 40px;
     font-size: 48px;
   }
 
-  .new-note__buttom{
+  .note__buttom{
     display: flex;
     margin-top: 60px;
     justify-content: space-between;
@@ -21,7 +21,7 @@
 
 
 
-.new-note_add {
+.note_add {
     position: fixed;
     top: 85%;
     left: 80%;}

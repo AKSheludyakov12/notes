@@ -8,3 +8,18 @@
     background-color: #3B3B3B;
     cursor: pointer;
 }
+.clear{
+    background-color: transparent
+}
+
+.circle{
+    background-color:  #252525;
+    border-radius: 50%;
+    filter: drop-shadow(-5px 0px 10px rgba(0, 0, 0, 0.40)) drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.40));text-align: center;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-position: left center;
+    width: 70px;
+    height: 70px;
+    flex-shrink: 0;
+}
