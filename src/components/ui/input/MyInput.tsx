@@ -1,13 +1,14 @@
 import React,{ InputHTMLAttributes, ReactNode } from 'react'
-import classes from './MyInput.module.css'
+import cls from './MyInput.module.scss'
 interface InputProps extends InputHTMLAttributes<HTMLElement>{
     children?: ReactNode
 }
 export const MyInput = ({children, ...props}: InputProps) =>{
     return ( 
-        <input {...props} className={classes.myInp
+        <input {...props} className={cls.myInp
         }
         >
             {children}
         </input>
     )
+}

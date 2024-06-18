@@ -1,16 +1,15 @@
 import React, {useState, useEffect, ChangeEvent, TextareaHTMLAttributes, FormEvent} from 'react';
 import { Link } from 'react-router-dom';
-import "./App.scss"
-import "./NewNote.scss"
-import "../../components/NoteList"
 import { Button } from "../../components/ui/button/MyButton"
 import { useDispatch } from 'react-redux';
 import randomColor from "randomcolor"
-import { NoteDataAction } from '../../App/Providers/Redux/Slice/NoteDataSlice';
 import { BackSVG } from '../../shared';
 import cls from "./NewNote.module.scss"
+import { NoteDataAction } from 'App/Providers/Redux/Slice/NoteDataSlice';
 
+interface NewNoteProps {
 
+}
 const NewNote = ({ notes }) => {
   const [noteText, setNoteText] = useState('');
   const [noteTitle, setNoteTitle] = useState('');

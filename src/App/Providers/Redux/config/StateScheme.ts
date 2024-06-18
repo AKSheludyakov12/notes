@@ -1,5 +1,5 @@
 export interface StateSchema { 
-    noteData: noteSchema[]
+    noteData: noteSchema
 }
 export interface noteData{ 
     noteData:noteSchema[]

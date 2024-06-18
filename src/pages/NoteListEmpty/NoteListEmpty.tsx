@@ -1,19 +1,11 @@
-import empty from "../img/rafiki.png";
-import React from "react";
-import cls from "./NoteListEmpry.module.scss"
-import add from "../img/add.svg";
-import { Link } from "react-router-dom";
+import empty from "../../img/rafiki.png"
 
-export const NoteListEmpry = () =>{
+export const NoteListEmpty = () =>{
     return (
-
-  
   <div className="note_empty">
   <img src={empty}></img>
     <p>Create your first note !</p>
-  </div>
-  
-
+  </div>  
     )
 }
 

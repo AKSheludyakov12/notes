@@ -1,6 +1,6 @@
 
 import { Link, useParams } from "react-router-dom";
-import React from "react";
+import React, { ChangeEvent } from "react";
 import redact from "../img/mode.svg"
 import back from "../img/back.svg";
 import save from "../img/save.svg"
@@ -55,7 +55,7 @@ console.log(editNoteText)
                   type="text"
                   value={updatedTitle}
                   placeholder={note ? note.noteTitle : ""}
-                  onChange={(e) => setUpdatedTitle(e.target.value)}
+                  onChange={(e: ChangeEvent<HTMLInputElement>) => setUpdatedTitle(e.target.value)}
                 />
 
             ) : (

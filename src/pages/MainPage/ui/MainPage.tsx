@@ -1,20 +1,20 @@
-import React, { useEffect, useMemo, useState } from "react"
+import { NoteDataAction } from "App/Providers/Redux/Slice/NoteDataSlice";
+import { StateSchema } from "App/Providers/Redux/config/StateScheme";
+import { useEffect, useMemo, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import cls from "./MainPage.module.scss"
-import { NoteList } from "./noteList/NoteList"
-import { Link } from "react-router-dom"
-import { Button, ButtonTheme } from "../../../components/ui/button/MyButton"
-import { AddNoteSvg } from "../../../shared"
-import { MyInput } from "../../../components/ui/input/MyInput"
-import { useDispatch, useSelector } from "react-redux"
-import { getNote } from "../../../App/Providers/Redux/selectors/getNotes"
-import {  noteData, noteSchema } from "../../../App/Providers/Redux/config/StateScheme"
-import { NoteAction } from "../../../App/Providers/Redux/Slice/NoteSlice"
-import { NoteDataAction } from "../../../App/Providers/Redux/Slice/NoteDataSlice"
-import { NoteListEmpry } from "../../NoteListEmpty/NoteListEmpty"
+import { MyInput } from "components/ui/input/MyInput";
+import { NoteListEmpty } from "pages/NoteListEmpty/NoteListEmpty";
+import { NoteList } from "./noteList/NoteList";
+import { AddNoteSvg } from "shared";
+import { Button, ButtonTheme } from "components/ui/button/MyButton";
+import { Link } from "react-router-dom";
+
+
 
 export const MainPage = ( ) => {
      const dispatch = useDispatch()
-    const notes = useSelector(getNote)
+     const notes =[ useSelector((state:StateSchema)=>state.noteData)]
     const [searchQuery, setSearchQuery] = useState<string>('');
 
   useEffect(() => {
@@ -23,20 +23,17 @@ export const MainPage = ( ) => {
     if (savedNotes) {
       dispatch(NoteDataAction.setNotes(savedNotes));
     }
-  }, []);
+  }, [dispatch]);
 
   const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) =>{
     setSearchQuery(e.target.value)
 } 
 
-    const searchedNotes = useMemo(() => {
+    useMemo(() => {
       dispatch(NoteDataAction.searchNote(searchQuery))
     }, [notes, searchQuery])
 
 
-    const handleDeleteNote = (id) => {
-      dispatch(NoteDataAction.deleteNote(id))
-      }
 
     return ( 
         <div className={cls.MainPage}>
@@ -48,15 +45,15 @@ export const MainPage = ( ) => {
             ></MyInput>
             <h1>Notes</h1>
           </header>
-          {!notes ? <NoteListEmpry/>
+          {!notes ? <NoteListEmpty/>
           :
             <ul className="notes">
-            {searchedNotes.map((note, index) => (
+            {notes.map((note, index) => (
               <NoteList
               note={note}
               id={index}
               backgroundColor={note.noteBackgroundColor}
-              onClick={handleDeleteNote}/>
+          />
             ))}
         
       

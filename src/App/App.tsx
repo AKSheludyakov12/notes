@@ -1,11 +1,11 @@
-import "./App.css";
 
 import {  Route, Routes } from "react-router-dom";
-import React, { useEffect } from "react";
-import NewNote from "../pages/NewNotePage/NewNote";
-import uuid from "react-uuid";
-import NotePage from "../components/NotePage";
+import "./style/index.scss"
+import { useEffect } from "react";
 import { MainPage } from "../pages/MainPage/ui/MainPage";
+import NewNote from "pages/NewNotePage/NewNote";
+import { getNote } from "./Providers/Redux/selectors/getNotes";
+import { useSelector } from "react-redux";
 
 // const handeEditNoteSubmit = (id, newTitle, newText) => {
 //   setNotes((prevNotes) =>{
@@ -23,23 +23,18 @@ import { MainPage } from "../pages/MainPage/ui/MainPage";
 // }
 const  App = () => {
 
-const notes = []
-
-  useEffect(() => {
-    localStorage.setItem("notes", JSON.stringify(notes));
-  }, [notes]);
-
+const notes = useSelector(getNote)
   return (
-    <div className="App">
-        {/* <Routes>
+    <div className="container">
+        <Routes>
           <Route path="/" element={<MainPage  />} />
           <Route
             path="/NewNote"
             element={<NewNote  notes={notes}  />}
           />
-          <Route path="/Note/:id" element={<NotePage  notes={notes}  /> }></Route>
+          {/* <Route path="/Note/:id" element={<NotePage  notes={notes}  /> }></Route> */}
     
-        </Routes> */}
+        </Routes>
   <MainPage/>
     </div>
   );

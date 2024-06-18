@@ -1,24 +1,32 @@
 import React from "react"
-import { Button, ButtonTheme } from "../../../../components/ui/button/MyButton"
 import cls from "./NoteList.module.scss" 
 import { Link } from "react-router-dom"
-import { DeleteSVG } from "../../../../shared"
-import { noteSchema } from "../../../../App/Providers/Redux/config/StateScheme"
+import { Button, ButtonTheme } from "components/ui/button/MyButton"
+import { DeleteSVG } from "shared"
+import { noteSchema } from "App/Providers/Redux/config/StateScheme"
+import { useDispatch } from "react-redux"
+import { NoteDataAction } from "App/Providers/Redux/Slice/NoteDataSlice"
 
 interface NoteListProps {
     id: number,
     backgroundColor: string,
     note: noteSchema,
-    onClick: (id:number) => void
+  
+  
 
 }
 
 export const NoteList = (props:NoteListProps) => {
+  const dispatch = useDispatch()
+  const handleDeleteNote = (id:number) => {
+    dispatch(NoteDataAction.deleteNote(id))
+    }
+
     const {
         id,
         backgroundColor,
         note,
-        onClick
+        ...otherProps
     } = props 
     return ( 
 
@@ -36,7 +44,6 @@ export const NoteList = (props:NoteListProps) => {
             <Button
             className={cls.delete_button} 
             theme={ButtonTheme.CLEAR}
-            onClick={onClick}
             >
               <DeleteSVG/>
             </Button>

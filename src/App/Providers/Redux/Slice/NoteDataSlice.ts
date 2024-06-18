@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { StateSchema, noteData, noteSchema } from "../config/StateScheme";
 import { stat } from "fs";
+import { noteData } from "../config/StateScheme";
 
 const initialState:noteData ={
     noteData: []
