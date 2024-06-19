@@ -7,8 +7,7 @@ interface InputProps extends InputHTMLAttributes<HTMLElement>{
 }
 export const MyInput = ({children, ...props}: InputProps) =>{
     return ( 
-        <input {...props} className={cls.myInp
-        }
+        <input {...props} className={cls.myInp}
         >
             {children}
         </input>

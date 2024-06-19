@@ -3,8 +3,8 @@ import cls from "./NoteList.module.scss"
 import { Link } from "react-router-dom"
 import { Button, ButtonTheme } from "components/ui/button/MyButton"
 import { DeleteSVG } from "shared"
-import { noteSchema } from "App/Providers/Redux/config/StateScheme"
-import { useDispatch } from "react-redux"
+import { StateSchema, noteSchema } from "App/Providers/Redux/config/StateScheme"
+import { useDispatch, useSelector } from "react-redux"
 import { NoteDataAction } from "App/Providers/Redux/Slice/NoteDataSlice"
 
 interface NoteListProps {
@@ -13,7 +13,6 @@ interface NoteListProps {
 
 export const NoteList = (props:NoteListProps) => {
   const dispatch = useDispatch()
-
 
     const {
         note,

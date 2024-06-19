@@ -3,8 +3,9 @@ import { Modal } from "shared"
 import cls from "./NewNote.module.scss"
 import { useDispatch } from "react-redux";
 import randomColor from "randomcolor"
-import { NoteDataAction } from "App/Providers/Redux/Slice/NoteDataSlice";
-export const NewNote =  ({isOpen,onClose}) => { 
+import { on } from "events";
+
+export const NewNote =  ({isOpen,onClose, onAddNewNote, setIsOpenPopup, setNewNoteModal}) => { 
   const dispatch = useDispatch()
     const [noteText, setNoteText] = useState('');
     const [noteTitle, setNoteTitle] = useState('');
@@ -18,17 +19,19 @@ export const NewNote =  ({isOpen,onClose}) => {
         setNoteTitle(event.target.value);
       };
       const saveNote =() => {
-        dispatch(NoteDataAction.addNote({noteText, noteTitle, noteBackgroundColor}))
-
+        const newNote = {noteTitle, noteText, noteBackgroundColor}
+        onAddNewNote(newNote)
+        setIsOpenPopup(false)
+        setNewNoteModal(false)
       }
     return( 
     <Modal
     isOpen={isOpen}
-    onClose={onClose}>
-      <button onClick={saveNote}>сохранить</button>
+    onClose={saveNote}>
+
             <input type='text' placeholder='Заголовок' value={noteTitle} onChange={handleNoteTitleChange} className={cls.note__title}/>
               <div className={cls.note__text}>
-              <textarea placeholder='Напишите что-нибудь...' value={noteText} onChange={handleNoteTextChange}></textarea>
+              <textarea placeholder='Напишите что-нибудь...' value={noteText} onChange={handleNoteTextChange} className={cls.note__text}></textarea>
             </div>
     </Modal>
     )

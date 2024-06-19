@@ -5,17 +5,19 @@ import { Button, ButtonTheme } from "components/ui/button/MyButton";
 import { useDispatch } from "react-redux";
 import { NoteDataAction } from "App/Providers/Redux/Slice/NoteDataSlice";
 import { NewNote } from "../NewNote";
+import { NewList } from "widgets/NewList/ui/NewList";
 
 interface PopupProps { 
     isOpen?: boolean;
     setIsOpenPopup?: (boolean)=>void
     className?: string;
+    onAddNewNote?: (newNote) => void
     
 }
 
 export const Popup = (props:PopupProps) => {
     const dispatch = useDispatch()
-    const {isOpen,setIsOpenPopup,className   } = props
+    const {isOpen,setIsOpenPopup,className,onAddNewNote   } = props
     const popupRef = useRef<HTMLDivElement>(null);
     const [newNoteModal, setNewNoteModal] = useState(false)
     const [newListModal, setNewListModal] = useState(false)
@@ -42,10 +44,14 @@ if(isOpen){
         <>
          {newNoteModal && <NewNote
             isOpen={newNoteModal}
-            onClose={onCloseModal}/>}
+            onClose={onCloseModal}
+            onAddNewNote={onAddNewNote}
+            setIsOpenPopup={setIsOpenPopup}
+            setNewNoteModal={setNewNoteModal}/>}
 
-        {newListModal && <Modal
-            isOpen={newListModal}/>}
+        {newListModal && <NewList
+            isOpen={newListModal}
+            onClose={onCloseModal}/>}
         <div className={cls.overlay} onClick={()=>setIsOpenPopup(false)}>
             <div className={ClassNames(cls.popup)} ref={popupRef}>
                 
@@ -59,7 +65,7 @@ if(isOpen){
                    
                     <span className={cls.item}>
                         <Button theme={ButtonTheme.POPUP}
-                        onClick={showNewNoteModal}>
+                        onClick={showNewListModal}>
                         Добавить список
                         </Button>
                     </span>
