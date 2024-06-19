@@ -1,0 +1,14 @@
+.note__text{
+    padding: 10px;
+    width: 490px;
+    height: 350px;
+    overflow: scroll;
+    font-size: 23px;
+    @media(max-width: 1440px){
+      width: calc(100vw - 100px);
+    }
+  }
+  .note__title{
+    padding-top: 40px;
+    font-size: 16px;
+  }

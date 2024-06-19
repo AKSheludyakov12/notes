@@ -1,14 +1,15 @@
 export interface StateSchema { 
-    noteData: noteSchema
+    noteData: noteData
 }
 export interface noteData{ 
-    noteData:noteSchema[]
+    noteData: noteSchema[],
+    searchNote: noteSchema[]
     
 }
 export interface noteSchema{ 
-    id?: number; 
+    id?: string; 
     noteTitle: string; 
     noteText: string; 
-    noteBackgroundColor: string;
+    noteBackgroundColor?: string;
     
 }

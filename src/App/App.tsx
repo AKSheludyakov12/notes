@@ -1,6 +1,5 @@
 
 import {  Route, Routes } from "react-router-dom";
-import "./style/index.scss"
 import { useEffect } from "react";
 import { MainPage } from "../pages/MainPage/ui/MainPage";
 import NewNote from "pages/NewNotePage/NewNote";
@@ -27,15 +26,13 @@ const notes = useSelector(getNote)
   return (
     <div className="container">
         <Routes>
-          <Route path="/" element={<MainPage  />} />
-          <Route
-            path="/NewNote"
-            element={<NewNote  notes={notes}  />}
-          />
+            <Route path="/" element={<MainPage  />} />
+            <Route
+              path="/NewNote"
+              element={<NewNote    />}
+            />
           {/* <Route path="/Note/:id" element={<NotePage  notes={notes}  /> }></Route> */}
-    
         </Routes>
-  <MainPage/>
     </div>
   );
 }

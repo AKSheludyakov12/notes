@@ -1,6 +1,6 @@
 import React from 'react';  
 import ReactDOM from 'react-dom/client';
-
+import "./App/style/index.scss"
 import { BrowserRouter } from 'react-router-dom';
 import { StoreProvider } from 'App/Providers/StoreProvider/StoreProvider';
 

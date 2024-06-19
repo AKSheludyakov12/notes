@@ -1,7 +1,41 @@
 .MainPage{
-        height: 100%;
         overflow-y: scroll;
-        min-height:750px ;
         background-color: #252525;
         color: #fff;
     }
+
+    .notes a{
+        width: 300px;
+        cursor: pointer;
+    }
+
+    .pozition_button{
+
+        position: fixed;
+        top: 85%;
+        left: 80%;
+    }
+
+
+      
+  .notes, ul li {
+    list-style: none;
+      padding: 0px;
+    margin: 0px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(5, 1fr);
+      @media (max-width: 1825px) {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        
+        @media (max-width: 1370px) {
+          grid-template-columns: repeat(2, 1fr);
+          margin: 0 auto;
+        }
+        @media (max-width: 765px) {
+          grid-template-columns: repeat(1, 1fr);
+          margin: 0 auto;
+        }
+  }
+  

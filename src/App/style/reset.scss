@@ -8,19 +8,13 @@ textarea
 	margin:0;
 	border:0;
 	padding:0;
-	
+  border: none;
 	background:none;
 	line-height:1;
 	
 	/* Browsers have different default form fonts */
 	font-size:13px;
 	font-family:Arial;}
-
-
-  *{
-    all:unset;
-    display: revert;
-}
 
 
 
@@ -31,6 +25,11 @@ textarea
 }
 ::-webkit-scrollbar {
   width: 0;
+}
+input:focus:active,
+textarea:focus:active{
+  border: none;
+
 }
 
 .App {
@@ -55,7 +54,3 @@ textarea
     transform: rotate(360deg);
   }
 }
-
-
-
-

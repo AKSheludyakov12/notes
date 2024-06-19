@@ -1,4 +1,5 @@
 .myBtn{
+    color: #fff;
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -8,12 +9,19 @@
     background-color: #3B3B3B;
     cursor: pointer;
 }
+.myBtn:active{
+    scale: 0.9;
+}
+.myBtn:hover{
+    opacity: 0.75;
+}
+    
 .clear{
     background-color: transparent
 }
 
 .circle{
-    background-color:  #252525;
+    background-color:  #3B3B3B;
     border-radius: 50%;
     filter: drop-shadow(-5px 0px 10px rgba(0, 0, 0, 0.40)) drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.40));text-align: center;
     text-align: center;
@@ -22,4 +30,17 @@
     width: 70px;
     height: 70px;
     flex-shrink: 0;
+}
+
+.popup_Btn{
+    background-color: transparent;
+    display: flex;
+    width: 100%;
+    height: 100%;
+   
+}
+
+.popup_Btn:active{
+    scale: 1;
+   
 }

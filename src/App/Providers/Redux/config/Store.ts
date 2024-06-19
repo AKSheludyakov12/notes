@@ -1,14 +1,35 @@
-import { ReducersMapObject, configureStore } from "@reduxjs/toolkit";
+import { ReducersMapObject, configureStore, combineReducers } from "@reduxjs/toolkit";
 import { StateSchema } from "./StateScheme";
 import { NoteDataReducer } from "../Slice/NoteDataSlice";
-import { NoteReducer } from "../Slice/NoteSlice";
+import {
+    persistStore,
+    persistReducer,
+    FLUSH,
+    REHYDRATE,
+    PAUSE,
+    PERSIST,
+    PURGE,
+    REGISTER,
+  } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
 
-export function createReduxStore(initialState: StateSchema){
-    const rootReducer: ReducersMapObject<StateSchema> = {
-        noteData: NoteReducer
-    }
-    return configureStore<StateSchema>({
-        reducer: rootReducer,
-        preloadedState: initialState
-    })
+const persistConfig = {
+    key: 'root',
+    storage
 }
+
+export function createReduxStore(initialState: StateSchema) {
+    const rootReducer = combineReducers ({
+        noteData: NoteDataReducer,
+        
+    });
+
+    const persistedReducer = persistReducer(persistConfig, rootReducer)
+
+
+    return configureStore<StateSchema>({
+        reducer: persistedReducer,
+        preloadedState: initialState
+    });
+}
+

@@ -1,9 +1,9 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { stat } from "fs";
-import { noteData } from "../config/StateScheme";
+import { noteData, noteSchema } from "../config/StateScheme";
 
 const initialState:noteData ={
-    noteData: []
+    noteData:[],
+    searchNote: []
 
 }
 
@@ -11,23 +11,26 @@ export const NoteSlice = createSlice({
 name: "NoteData",
 initialState,
 reducers:{ 
-    setNotes:  (state, action: PayloadAction<noteData>) => {
-        state.noteData = action.payload.noteData
+    addNote:  (state, action: PayloadAction<noteSchema>) => {
+        state.noteData.push({
+            id: new Date().toISOString(),
+            noteText: action.payload.noteText,
+            noteTitle: action.payload.noteTitle,
+            noteBackgroundColor: action.payload.noteBackgroundColor
+        })  
     },
-    deleteNote: (state, action: PayloadAction<number>) =>{
-        state.noteData = state.noteData.filter((note)=>
-            note.id !== action.payload
-        )
-    }, 
+    deleteNote: (state, action: PayloadAction<string>) => {
+        state.noteData = state.noteData.filter((note) => note.id !== action.payload);
+    },
+    
     searchNote: (state, action: PayloadAction<string>) => {
-        state.noteData = state.noteData.filter((note)=>{
-            note.noteText.includes(action.payload) ||   
-            note.noteTitle.includes(action.payload)
-            
-        })
+        state.searchNote = state.noteData.filter((note) =>
+            note.noteText.includes(action.payload) || note.noteTitle.includes(action.payload)
+        );
     }
 }
 })
 
 export const {actions: NoteDataAction } = NoteSlice
 export const {reducer: NoteDataReducer } = NoteSlice
+
