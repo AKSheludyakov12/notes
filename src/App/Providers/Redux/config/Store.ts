@@ -12,6 +12,7 @@ import {
     REGISTER,
   } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
+import { todoDataReducer } from "../Slice/TodoDataSlice";
 
 const persistConfig = {
     key: 'root',
@@ -21,6 +22,7 @@ const persistConfig = {
 export function createReduxStore(initialState: StateSchema) {
     const rootReducer = combineReducers ({
         noteData: NoteDataReducer,
+        todoData: todoDataReducer
         
     });
 
