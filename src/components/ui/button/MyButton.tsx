@@ -12,7 +12,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     children?: ReactNode,
     theme?: ButtonTheme,
     className?: string,
-    onClick?: () => void
+    onClick?: (e) => void
 }
 
 
