@@ -17,12 +17,13 @@ export interface StateSchema {
     noteText?: string;
     noteBackgroundColor?: string;
   }
-  
+  export interface todoPointSchema {
+    todoText: string;
+    todoCompleted: boolean;
+}
   export interface todoSchema {
     id?: string;
     todoTitle?: string;
-    todoPoint?: [
-      todoText: string
-    ];
+    todoPoint?:todoPointSchema[]
     todoBackgroundColor?: string;
   }
