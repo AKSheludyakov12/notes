@@ -1,0 +1,49 @@
+.NotesWrapper{
+    position: relative;
+    width: 320px;
+    height: fit-content;
+    grid-auto-rows: min-content;
+    max-height: 350px;
+    list-style: none;
+    color: var(--li-note-color);
+    border: 4px solid rgb(213, 213, 213);
+    display: flex;
+    justify-content: space-between;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 37px 24px 25px 24px;
+    transform: calculate-transform(1, 0);
+    &:hover{
+    border: 4px solid rgb(243, 243, 243);
+    }
+}
+
+    .title{
+        font-weight: 700;
+
+    }
+.text{
+        padding-top: 5px;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        @media (max-width:910px) {
+           
+        }
+        @media (max-width:375px) {
+            display: none;
+        }
+    }
+    
+    .content{
+        color: var(--li-note-color);
+        padding: 22px 0px 10px 24px;
+        text-align: left;
+        font-size: 25px;
+        line-height: normal;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
