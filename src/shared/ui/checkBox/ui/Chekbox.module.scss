@@ -1,0 +1,43 @@
+.checkbox{
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.size{
+    width: 26px;
+    height: 26px;
+
+
+}
+
+.chekboxText_done{
+    color: darken($color: #c5c5c5, $amount: 20);
+    padding-left: 10px;
+
+}
+.chekboxText{ 
+    padding-left: 10px;
+    color: #c5c5c5;
+}
+
+.chekboxSVG{
+    svg{
+        stroke: #c5c5c5;
+    
+    }
+    
+}
+.chekboxSVG_done{
+    svg{
+        stroke:darken($color: #c5c5c5, $amount: 20);
+    
+    }
+    
+}
+
+
+.delete_point{
+    position: absolute;
+    top: 10%;
+    left: 30%;
+}
