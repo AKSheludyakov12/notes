@@ -1,5 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { noteData, noteSchema, todoSchema } from "../config/StateScheme";
+import randomColor from "randomcolor"
 
 const initialState:noteData ={
     noteData:[],
@@ -13,21 +14,41 @@ initialState,
 reducers:{ 
     addNote:  (state, action: PayloadAction<noteSchema>) => {
       const newNote = {
-            id: new Date().toISOString(),
-            noteText: action.payload.noteText,
-            noteTitle: action.payload.noteTitle,
-            noteBackgroundColor: action.payload.noteBackgroundColor
+            id: action.payload.id,
+            noteText: ' ',
+            noteTitle: ' ',
+            noteBackgroundColor: randomColor({
+                luminosity: 'light',
+             })
         }
         return {
             ...state, 
             noteData:[...state.noteData, newNote]
         }
     },
-    deleteNote: (state, action: PayloadAction<string>) => {
-        state.noteData = state.noteData.filter((note) => note.id !== action.payload);
+
+    updateNoteTitle: (state, action: PayloadAction<{id:string, text:string}>)=>{
+        state.noteData.map(note => {
+            if (note.id === action.payload.id) {
+                note.noteTitle = action.payload.text;
+            }
+        });
     },
     
-        searchNote: (state, action: PayloadAction<string>) => {
+    updateNoteText: (state, action: PayloadAction<{id: string, text:string} >)=>{
+        state.noteData.map((note) => {
+            if (note.id === action.payload.id) {
+                note.noteText = action.payload.text
+            }
+        });
+    },
+    deleteNote: (state, action: PayloadAction<string>) => {
+        state.noteData = state.noteData.filter((note) => note.id !== action.payload);
+        state.searchNote = state.noteData.filter((note) => note.id !== action.payload);
+
+    },
+    
+     searchNote: (state, action: PayloadAction<string>) => {
             state.searchNote = state.noteData.filter((note) =>
                 note.noteText.includes(action.payload) || note.noteTitle.includes(action.payload)
             );
