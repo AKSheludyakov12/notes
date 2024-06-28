@@ -1,4 +1,7 @@
 .MainPage{
+        max-width: 1860px;
+        padding: 15px;
+        margin: 0 auto;
         overflow-y: scroll;
         background-color: #252525;
         color: #fff;
@@ -17,25 +20,3 @@
     }
 
 
-      
-  .notes, ul li {
-    list-style: none;
-      padding: 0px;
-    margin: 0px;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: repeat(5, 1fr);
-      @media (max-width: 1825px) {
-          grid-template-columns: repeat(3, 1fr);
-        }
-        
-        @media (max-width: 1370px) {
-          grid-template-columns: repeat(2, 1fr);
-          margin: 0 auto;
-        }
-        @media (max-width: 765px) {
-          grid-template-columns: repeat(1, 1fr);
-          margin: 0 auto;
-        }
-  }
-  
