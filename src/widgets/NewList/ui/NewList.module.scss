@@ -1,0 +1,29 @@
+.todo_points{
+    color:  var(--modal-text-color);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.todo_title{
+    color:  var(--modal-text-color);
+    margin-bottom: 15px;
+
+}
+
+.todo_text{
+    color:  var(--modal-text-color);
+    margin-bottom: 15px;
+}
+
+.newPointBtn{
+    display: flex;
+    align-content: center;
+    svg{
+        width: 16px;
+        padding-right: 10px;
+    }
+}
+// .ponit{
+//     display: flex;
+//     align-items: center;
+// }
