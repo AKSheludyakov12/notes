@@ -1,5 +1,6 @@
 .note__text{
-  color: #fff;
+
+    color:  var(--modal-text-color);
     padding: 10px;
     width: 490px;
     height: 350px;
@@ -10,8 +11,7 @@
     }
   }
   .note__title{
-  color: #fff;
-
+    color:  var(--modal-text-color);
     padding-top: 40px;
     font-size: 16px;
   }
