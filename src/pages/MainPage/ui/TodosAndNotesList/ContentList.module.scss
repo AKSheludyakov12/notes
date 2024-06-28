@@ -1,0 +1,40 @@
+.ContentList{
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    position: absolute;
+    @media (max-width: 1800px) {
+    grid-template-columns: repeat(4, auto);
+      
+    }
+    @media (max-width: 1280px) {
+      grid-template-columns: repeat(3, auto);
+        
+      }
+      @media (max-width: 480px) {
+        grid-template-columns: repeat(1, auto);
+          
+        }
+    
+   }
+
+.delete_button{
+    margin: auto;
+    margin-right: 10px;
+    max-width: 45px;
+  
+    }
+
+    .ContentList > *{
+        grid-auto-rows: min-content;
+       }
+
+       
+       $column-width: 250px; // Предполагается, что каждая заметка имеет ширину 250px
+       $gap: 16px; // Предполагается, что между заметками расстояние 16px
+       
+       @function calculate-transform($column-index, $row-index) {
+         @return translate(
+           ($column-index * ($column-width + $gap)),
+           ($row-index * $row-height)
+         );
+       }
